@@ -33,10 +33,10 @@ if(runcode){
   #Fitting unsupervided Latent factor model
   fitPFA <- LFMPFA(datasca, d=100)
   #Fitting the supervised model with training data
-  fit <- MultiRBFjointHigh(Ytr=Ytr, Xtr=Xred, Xte=Xred, Yte = Yte, cutpval=0.01, grpindex=grpindex, pindexprior=T, pindexGprior=F)
+  fit <- MultiRBFjointHigh(Ytr=Ytr, Xtr=Xred, Xte=Xred, cutpval=0.01, grpindex=grpindex, pindexprior=T, pindexGprior=F)
   
   #Fitting the supervised model with the complete data
-  fitFsca <- MultiRBFjointHigh(Ytr=datasca, Xtr=Xred, Xte=NULL, Yte = NULL, cutpval=0.01, grpindex=grpindex, pindexprior=T, pindexGprior=F)
+  fitFsca <- MultiRBFjointHigh(Ytr=datasca, Xtr=Xred, Xte=NULL, cutpval=0.01, grpindex=grpindex, pindexprior=T, pindexGprior=F)
 }
 
 # if(!runcode){

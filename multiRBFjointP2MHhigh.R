@@ -2,13 +2,12 @@
 #     the columns with indices 1:mg + mg*(i-1) is associated with the i-th region.
 #    
 #Xte is the test data matrix
-#Ytr is the training data matrix with 30% entries missing of dimension v \times n.
-#Yte is the test data matrix with missing entries at training locations of dimension v \times n.
-
+#Ytr is the training data matrix with NA's at the missing entries of dimension v \times n or at the test places.
+#The Ytep variable in the the output of this function will be of same dimention as Ytr with NA's replaced by predicted values.
 
 source("Latentfactor.R") #It is needed if runFA = T
 
-MultiRBFjointHigh <- function(Ytr, Xtr, K=NULL, Xte = NULL, Yte=NULL, corel=T,lasso=F, runFA=F, noupR=1000, noupRL=1000, grpindex, indz=NULL, fitL=NULL, updateLow=F, Shr = T, cutpval=0.01, pindexprior=F,pindexGprior=F, pindex=NA, pindexG=NA, Total_itr = 10000, burn = 5000){
+MultiRBFjointHigh <- function(Ytr, Xtr, K=NULL, Xte = NULL, corel=T,lasso=F, runFA=F, noupR=1000, noupRL=1000, grpindex, indz=NULL, fitL=NULL, updateLow=F, Shr = T, cutpval=0.01, pindexprior=F,pindexGprior=F, pindex=NA, pindexG=NA, Total_itr = 10000, burn = 5000){
   
   set.seed(1) 
   
@@ -432,7 +431,7 @@ MultiRBFjointHigh <- function(Ytr, Xtr, K=NULL, Xte = NULL, Yte=NULL, corel=T,la
   indzl <- list()
   
   Y <- Ytr
-  if(!is.null(Yte)){Y <- t(apply(Ytr, 1, function(x){nax <- which(is.na(x)==T); x[nax] <- rep(mean(x[-nax]), length(nax)); return(x)}))}
+  if(!is.null(Xte)){Y <- t(apply(Ytr, 1, function(x){nax <- which(is.na(x)==T); x[nax] <- rep(mean(x[-nax]), length(nax)); return(x)}))}
   
   if(is.null(indz)){
     indzM <- matrix(0, p, d)
