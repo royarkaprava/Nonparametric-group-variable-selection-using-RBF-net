@@ -1,8 +1,7 @@
-#Xred is the matrix of dimension n \times p with transformed predictor vectors for screened set of regions.
-#     the columns with indices 1:mg + mg*(i-1) is associated with the i-th region.
+#Xtr is the matrix of dimension n \times p combining all the data
 #    
-#Xte is the test data matrix
-#Ytr is the training data matrix with NA's at the missing entries of dimension v \times n or at the test places.
+#Xte is the test data matrix which would essentially be Xtr
+#Ytr is the training data matrix with NA's at the missing entries of dimension v \times n.
 #The Ytep variable in the the output of this function will be of same dimention as Ytr with NA's replaced by predicted values.
 
 source("Latentfactor.R") #It is needed if runFA = T
