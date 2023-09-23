@@ -2,6 +2,7 @@
 #Xte is the test data matrix same as Xtr
 #Ytr is the training data matrix with 30% entries missing of dimension v \times n.
 #Yte is the test data matrix with missing entries at training locations of dimension v \times n.
+#For Yte it is primarily the locations to be predicted are important, not the actual values.
 
 #The Ytep variable from the output will be of same dimension as Ytr with missing location filled.
 
